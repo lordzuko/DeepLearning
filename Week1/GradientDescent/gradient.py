@@ -27,16 +27,18 @@ for e in range(epochs):
         # Loop through all records, x is the input, y is the target
 
         # TODO: Calculate the output
-        output = None
+        h = np.dot(weights, x)
+        output = sigmoid(h)
 
         # TODO: Calculate the error
-        error = None
+        error = y - output
 
         # TODO: Calculate change in weights
-        del_w += 0
+        gradient_fh = output*(1-output)
+        del_w += error*gradient_fh*x*learnrate
 
         # TODO: Update weights
-    weights += 0
+    weights += del_w
 
     # Printing out the mean square error on the training set
     if e % (epochs / 10) == 0:

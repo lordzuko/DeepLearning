@@ -22,7 +22,7 @@ nn_output = sigmoid(h) # f(h)
 error = (y-nn_output)
 
 # TODO: Calculate change in weights
-gradient_fh = nn_output * ( 1-nn_output)
+gradient_fh = nn_output * (1-nn_output)
 
 del_w = learnrate*error*gradient_fh*x
 
