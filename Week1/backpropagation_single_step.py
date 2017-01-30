@@ -38,7 +38,6 @@ del_err_hidden = np.dot(del_err_output,weights_hidden_output)*hidden_layer_outpu
 # TODO: Calculate change in weights for hidden layer to output layer
 delta_w_h_o = learnrate*del_err_output*hidden_layer_output
 # TODO: Calculate change in weights for input layer to hidden layer
-
 delta_w_i_o =learnrate*del_err_hidden*x[:,None]
 
 print('Change in weights for hidden layer to output layer:')
