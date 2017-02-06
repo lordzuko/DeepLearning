@@ -28,5 +28,6 @@ for _ in range(20):
     error = (pred - goal_pred) ** 2
     direction_and_amount = (pred - goal_pred) * input
     knob_weight = weight - direction_and_amount
+    weight = knob_weight
 
     print("Error:" + str(error) + " Prediction:" + str(pred))
