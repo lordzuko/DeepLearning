@@ -5,12 +5,12 @@ mnist = input_data.read_data_sets("." , one_hot=True, reshape=False)
 # Parameters
 learning_rate = 0.001
 batch_size = 128
-training_epochs = 20
+training_epochs = 30
 display_step = 1
 
 n_input = 784
 n_classes = 10
-n_hidden_layer = 256 # determines the size of hidden layer in network
+n_hidden_layer = 300 # determines the size of hidden layer in network
 
 #store layers weights  & biases
 weights = {
@@ -41,3 +41,25 @@ with tf.Session() as sess:
         for i in range(total_batch):
             batch_x, batch_y = mnist.train.next_batch(batch_size)
             sess.run(optimizer, feed_dict={x:batch_x, y:batch_y})
+
+        # print(sess.run(logits,feed_dict={x:batch_x,y:batch_y}))
+        # print(sess.run(y, feed_dict={y:batch_y}))
+
+            # Display logs per epoch step
+        if epoch % display_step == 0:
+            c = sess.run(cost, feed_dict={x: batch_x, y: batch_y})
+            print("Epoch:", '%04d' % (epoch + 1), "cost=", \
+                  "{:.9f}".format(c))
+
+    print("Optimization Finished!")
+
+    #Test model
+    correct_prediction = tf.equal(tf.argmax(logits,1),tf.argmax(y,1))
+    #l = sess.run(correct_prediction,feed_dict={x:batch_x,y:batch_y})
+
+    #Calculate accuracy
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
+    #print(sess.run(accuracy, feed_dict={x:batch_x, y : batch_y}))
+    # Decrease test_size if you don't have enough memory
+    test_size = 256
+    print("Accuracy:", accuracy.eval({x: mnist.test.images[:test_size], y: mnist.test.labels[:test_size]}))
