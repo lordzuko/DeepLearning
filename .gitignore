@@ -1,9 +1,3 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
 .ipynb_checkpoints
-Week1/.ipynb_checkpoints/
-Week2/.ipynb_checkpoints/
-Week5/.ipynb_checkpoints/
-Week5/intro-to-tensorflow/notMNIST.pickle
-Week5/intro-to-tensorflow/notMNIST_test.zip
-Week5/intro-to-tensorflow/notMNIST_train.zip
